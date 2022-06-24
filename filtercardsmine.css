@@ -1,0 +1,117 @@
+:root{
+    --background-dark:#c9184a;
+    --text-light:#4cc9f0;
+    --text-lighter:#a9def9;
+    --spacing-s:8px;
+    --spacing-m:16px;
+    --spacing-l:24px;
+    --spacing-xl:32px;
+    --spacing-xxl:64px;
+    --width-container:1200px;
+}
+*{
+    border:0;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+html{
+    height:100%;
+    font-family:'Montserrat', sans-serif;
+    font-size: 14px;
+}
+body{
+    height:100%;
+}
+.main{
+    align-items: flex-start;
+    background-image: linear-gradient(45deg,#ef798a,#f7a9a8,#7d82b8);
+    display:flex;
+    min-height: 100%;
+    justify-content: center;
+    padding: var(--spacing-xxl) var(--spacing-l);
+}
+.card-main{
+    width:100%;
+    display:grid;
+    grid-template-columns: repeat(1,1fr);
+    grid-column-gap: var(--spacing-l);
+    grid-row-gap: var(--spacing-l);
+    max-width: var(--width-container);
+    
+}
+@media (min-width:540px){
+    .card-main{
+        grid-template-columns: repeat(2,1fr);
+        
+    }
+}
+
+@media (min-width:960px){
+    .card-main{
+        grid-template-columns: repeat(4,1fr);
+    }
+}
+/* try this later @media(max-width:540px){
+    .card-main:hover{
+        margin-bottom: 25;
+    }
+} */
+.card{
+    
+    position:relative;
+}
+.card:before{
+    content:' ';
+    display:block;
+    padding-bottom: 150%;
+    width:100%;
+}
+.card-background{
+    position:absolute;
+    bottom:0;
+    right:0;
+    top:0;
+    left:0;
+    filter:brightness(0.8) saturate(1.5) contrast(0.9);
+    background-size: cover;
+    background-position:center ;
+    border-radius: var(--spacing-l);
+    transform-origin: center;
+    transform:scale(1) ;
+    transition:
+        filter 200ms linear,
+        transform 200ms linear; 
+}
+.card:hover  .card-background{
+    transform: scale(1.1) ;
+}
+.card-main:hover > .card:not(:hover)
+.card-background  {
+   
+    filter:brightness(1) saturate(0) contrast(0.5) blur(5px);
+
+}
+.card-main:hover > .card:not(:hover)
+.content {
+    color:transparent;
+    text-decoration: none;
+    text-shadow: none;
+}
+.content{
+    position: absolute;
+    right:15px;
+    bottom:0;
+    padding: var(--spacing-l);
+    color: #90e0ef;
+    text-shadow:3px 3px 20px #03045e;
+}
+.card-category:{
+    font-size:1.2rem;
+    margin-bottom: var(--spacing-s);
+    text-transform: uppercase;
+}
+.heading{
+   font-size: 2rem;
+   line-height: 1.5; 
+}
